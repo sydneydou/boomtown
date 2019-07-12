@@ -125,7 +125,7 @@ module.exports = postgres => {
 
           postgres.connect((err, client, done) => {
             try {
-              // Begin postgres transaction
+
               client.query('BEGIN', async err => {
                 const { title, description, tags } = item;
 
@@ -135,12 +135,9 @@ module.exports = postgres => {
                 };
 
                 const newItem = await postgres.query(insertQuery);
-
                 const tagsId = tags.map(tag => tag.id);
                 const newItemId = newItem.rows[0].id;
 
-                console.log(tagsId[0]);
-                console.log(newItemId);
 
                 const newItemTag = await postgres.query({
                   text: `INSERT INTO itemtags (tagid,itemid) values ${tagsQueryString(
@@ -151,30 +148,16 @@ module.exports = postgres => {
                   values: tagsId
                 })
 
-
-
-                // const newItemTag= {
-                //   text:`INSERT INTO itemtags (itemid, tagid) values ($1, $2)`
-                // }
-
-
-
-
-                // Insert tags
-                // @TODO
-                // -------------------------------
-
-                // Commit the entire transaction!
                 client.query('COMMIT', err => {
                   if (err) {
                     throw err;
                   }
-                  // release the client back to the pool
+
                   done();
-                  // Uncomment this resolve statement when you're ready!
+
                   resolve(newItem.rows[0])
                   resolve(newItemTag)
-                  // -------------------------------
+
                 });
               });
             } catch (e) {
