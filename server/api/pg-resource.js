@@ -1,3 +1,4 @@
+// this file is responsible for firing sql queries
 function tagsQueryString(tags, itemid, result) {
   /**
    * Challenge:
