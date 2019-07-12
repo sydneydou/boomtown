@@ -120,33 +120,9 @@ module.exports = postgres => {
     },
     async saveNewItem({ item, image, users }) {
 
-
-      /**
-       *  @TODO: Adding a New Item
-       *
-       *  Adding a new Item to Posgtres is the most advanced query.
-       *  It requires 3 separate INSERT statements.
-       *
-       *  All of the INSERT statements must:
-       *  1) Proceed in a specific order.
-       *  2) Succeed for the new Item to be considered added
-       *  3) If any of the INSERT queries fail, any successful INSERT
-       *     queries should be 'rolled back' to avoid 'orphan' data in the database.
-       *
-       *  To achieve #3 we'll ue something called a Postgres Transaction!
-       *  The code for the transaction has been provided for you, along with
-       *  helpful comments to help you get started.
-       *
-       *  Read the method and the comments carefully before you begin.
-       */
-
       try {
         return new Promise((resolve, reject) => {
-          /**
-           * Begin transaction by opening a long-lived connection
-           * to a client from the client pool.
-           * - Read about transactions here: https://node-postgres.com/features/transactions
-           */
+
           postgres.connect((err, client, done) => {
             try {
               // Begin postgres transaction
@@ -160,17 +136,29 @@ module.exports = postgres => {
 
                 const newItem = await postgres.query(insertQuery);
 
-                // Generate new Item query
-                // @TODO
-                // -------------------------------
+                const tagsId = tags.map(tag => tag.id);
+                const newItemId = newItem.rows[0].id;
 
-                // Insert new Item
-                // @TODO
-                // -------------------------------
+                console.log(tagsId[0]);
+                console.log(newItemId);
 
-                // Generate tag relationships query (use the'tagsQueryString' helper function provided)
-                // @TODO
-                // -------------------------------
+                const newItemTag = await postgres.query({
+                  text: `INSERT INTO itemtags (tagid,itemid) values ${tagsQueryString(
+                    tags,
+                    newItemId,
+                    ' '
+                  )}`,
+                  values: tagsId
+                })
+
+
+
+                // const newItemTag= {
+                //   text:`INSERT INTO itemtags (itemid, tagid) values ($1, $2)`
+                // }
+
+
+
 
                 // Insert tags
                 // @TODO
@@ -185,6 +173,7 @@ module.exports = postgres => {
                   done();
                   // Uncomment this resolve statement when you're ready!
                   resolve(newItem.rows[0])
+                  resolve(newItemTag)
                   // -------------------------------
                 });
               });

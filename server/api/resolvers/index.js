@@ -98,9 +98,6 @@ module.exports = app => {
       // ...authMutations(app),
       // -------------------------------
 
-      async addItem(parent, args, context, info) {
-
-
         /**
          *  @TODO: Destructuring
          *
@@ -118,6 +115,8 @@ module.exports = app => {
         //const user = await jwt.decode(context.token, app.get('JWT_SECRET'));
 
 
+      async addItem(parent, args, context, info) {
+
         try {
           const user = "Sydney";
           const newItem = await context.pgResource.saveNewItem(
@@ -132,6 +131,8 @@ module.exports = app => {
           console.log("Unable to add an item");
         }
       }
+
+
     }
   };
 };
