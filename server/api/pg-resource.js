@@ -61,9 +61,21 @@ module.exports = postgres => {
         throw "User not found";
       }
     },
+    async getBorrower(id) {
+      const findUserQuery = {
+        text: 'SELECT * FROM users WHERE id = $1 LIMIT 1',
+        values: [id]
+      };
+      try {
+        const users = await postgres.query(findUserQuery);
+        return users.rows[0];
+      } catch (e) {
+        throw "User not found";
+      }
+    },
     async getItems(idToOmit) {
       const items = await postgres.query({
-        text:  `SELECT * FROM items WHERE itemowner != $1`,
+        text: `SELECT * FROM items WHERE itemowner != $1`,
         values: idToOmit ? [idToOmit] : []
       });
       return items.rows;
@@ -92,14 +104,22 @@ module.exports = postgres => {
     },
     async getTagsForItem(id) {
       const tagsQuery = {
-        text: ``, // @TODO: Advanced query Hint: use INNER JOIN
+        text: `SELECT
+        id,
+        title
+        FROM tags
+        INNER JOIN itemtags
+        ON tags.id=itemtags.tagid
+        WHERE itemtags.itemid = $1;`,
         values: [id]
       };
 
       const tags = await postgres.query(tagsQuery);
       return tags.rows;
     },
-    async saveNewItem({ item, users }) {
+    async saveNewItem({ item, image, users }) {
+
+
       /**
        *  @TODO: Adding a New Item
        *
@@ -119,62 +139,74 @@ module.exports = postgres => {
        *  Read the method and the comments carefully before you begin.
        */
 
-      return new Promise((resolve, reject) => {
-        /**
-         * Begin transaction by opening a long-lived connection
-         * to a client from the client pool.
-         * - Read about transactions here: https://node-postgres.com/features/transactions
-         */
-        postgres.connect((err, client, done) => {
-          try {
-            // Begin postgres transaction
-            client.query('BEGIN', async err => {
-              const { title, description, tags } = item;
+      try {
+        return new Promise((resolve, reject) => {
+          /**
+           * Begin transaction by opening a long-lived connection
+           * to a client from the client pool.
+           * - Read about transactions here: https://node-postgres.com/features/transactions
+           */
+          postgres.connect((err, client, done) => {
+            try {
+              // Begin postgres transaction
+              client.query('BEGIN', async err => {
+                const { title, description, tags } = item;
 
-              // Generate new Item query
-              // @TODO
-              // -------------------------------
+                const insertQuery = {
+                  text: `INSERT INTO items (title,description,ownerid) values ($1, $2, 1) RETURNING *`,
+                  values: [title, description]
+                };
 
-              // Insert new Item
-              // @TODO
-              // -------------------------------
+                const newItem = await postgres.query(insertQuery);
 
-              // Generate tag relationships query (use the'tagsQueryString' helper function provided)
-              // @TODO
-              // -------------------------------
+                // Generate new Item query
+                // @TODO
+                // -------------------------------
 
-              // Insert tags
-              // @TODO
-              // -------------------------------
+                // Insert new Item
+                // @TODO
+                // -------------------------------
 
-              // Commit the entire transaction!
-              client.query('COMMIT', err => {
+                // Generate tag relationships query (use the'tagsQueryString' helper function provided)
+                // @TODO
+                // -------------------------------
+
+                // Insert tags
+                // @TODO
+                // -------------------------------
+
+                // Commit the entire transaction!
+                client.query('COMMIT', err => {
+                  if (err) {
+                    throw err;
+                  }
+                  // release the client back to the pool
+                  done();
+                  // Uncomment this resolve statement when you're ready!
+                  resolve(newItem.rows[0])
+                  // -------------------------------
+                });
+              });
+            } catch (e) {
+              // Something went wrong
+              client.query('ROLLBACK', err => {
                 if (err) {
                   throw err;
                 }
                 // release the client back to the pool
                 done();
-                // Uncomment this resolve statement when you're ready!
-                // resolve(newItem.rows[0])
-                // -------------------------------
               });
-            });
-          } catch (e) {
-            // Something went wrong
-            client.query('ROLLBACK', err => {
-              if (err) {
-                throw err;
+              switch (true) {
+                default:
+                  throw e;
               }
-              // release the client back to the pool
-              done();
-            });
-            switch (true) {
-              default:
-                throw e;
             }
-          }
+          });
         });
-      });
+      }
+      catch (e) {
+        console.log(e);
+      }
     }
   };
 };
