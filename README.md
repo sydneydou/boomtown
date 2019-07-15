@@ -8,7 +8,7 @@ Created a database through PostGreSQL to support a sharing economy for the appli
 ## Technologies and/or Libraries Used
 - Apollo Server (library that helps connect GraphQL schema to the server in Node.js)
 - Express Library (web application framework for Node.js, designed for building web applications and API's)
-- GraphQL (query language for the applications API)
+- GraphQL (query language for the applications client-facing API)
 
 ## Server
 
