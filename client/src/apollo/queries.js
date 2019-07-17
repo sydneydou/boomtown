@@ -6,54 +6,103 @@ import gql from 'graphql-tag';
 
 const ItemFields = gql`
   fragment ItemFields on Item {
-    # @TODO: Create a fragment to query the following fields for an item:
-    #
-    # id
-    # title
-    # imageurl
-    # description
-    # created
-    # tags (id and title fields)
-    # itemowner (id, fullname, email, and bio fields)
-    # borrower (id, fullname, email, and bio fields)
-    #
-    # See the Apollo docs for instructions on how to use fragments:
-    # https://www.apollographql.com/docs/angular/features/fragments.html
+
+     id
+     title
+     imageurl
+     description
+     created
+     tags {
+       id
+       title
+     }
+     itemowner {
+       id
+       fullname
+       email
+       bio 
+      }
+     borrower {
+       id
+       fullname
+       email
+       bio
+     }
   }
 `;
+
+const UserFields = gql`
+  fragment UserFields on User{
+
+    email
+    fullname
+    bio
+    items{
+      id
+      title
+		}
+    borrowed{
+      id
+      title
+    }
+  }
+`;
+
+const TagFields = gql`
+  fragment TagFields on Tag{
+    tags{
+      id
+      title   
+    }
+  }
+  `;
+
+  const AddItemFields = gql`
+  fragment AddItemFields on NewItemInput{
+    {
+      title
+      id
+      description
+    }
+  }
+  `;
+
 export const ITEM_QUERY = gql`
   query item($id: ID!) {
-    # @TODO: Query an item by its id and return the ItemFields fragment.
+    ...ItemFields
   }
   ${ItemFields}
 `;
 
 export const ALL_ITEMS_QUERY = gql`
   query items($filter: ID) {
-    # @TODO: Query items (optionally by tag id) and return the ItemFields fragment.
+      ...ItemFields
   }
   ${ItemFields}
 `;
 
 export const ALL_USER_ITEMS_QUERY = gql`
   query user($id: ID!) {
-    # @TODO: Query the bio, email, fullname, items, and borrowed for the user by id
-    # Use the ItemFields fragment for the items and borrowed fields.
+      ...UserFields
   }
   ${ItemFields}
 `;
 
 export const ALL_TAGS_QUERY = gql`
-  query {
-    # @TODO: Query the id and title fields for tags.
+  query tags{
+      ...TagFields
   }
+  ${TagFields}
 `;
 
 export const ADD_ITEM_MUTATION = gql`
   mutation addItem($item: NewItemInput!) {
-    # @TODO: Pass the item and image into the addItem mutation as arguments
-    # and return the new item id when the mutation is complete.
-  }
+    ...AddItemFields
+    // # @TODO: Pass the item and image into the addItem mutation as arguments
+    // # and return the new item id when the mutation is complete.
+  };
+  ${AddItemFields}
+  return id
 `;
 
 /**
