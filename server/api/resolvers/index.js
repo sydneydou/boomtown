@@ -25,7 +25,7 @@ module.exports = app => {
       },
       async items(parent, { filter }, { pgResource }, info) {
         try {
-          const items = await pgResource.getItemsForUser(filter);
+          const items = await pgResource.getItems(filter);
           return items;
         } catch (e) {
           throw new ApolloError(e);
@@ -97,8 +97,8 @@ module.exports = app => {
       // @TODO: Uncomment this later when we add auth
       // ...authMutations(app),
       // -------------------------------
-        //image = await image;
-        //const user = await jwt.decode(context.token, app.get('JWT_SECRET'));
+      //image = await image;
+      //const user = await jwt.decode(context.token, app.get('JWT_SECRET'));
 
 
       async addItem(parent, args, context, info) {
