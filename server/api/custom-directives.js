@@ -67,7 +67,7 @@ class AuthDirective extends SchemaDirectiveVisitor {
          * to your schema types.
          *
          */
-
+          console.log(context.req.body);
         return resolve.apply(this, [parent, args, context, info]);
       };
     });

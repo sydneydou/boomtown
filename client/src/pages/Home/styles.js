@@ -19,7 +19,7 @@ const styles = theme => ({
   subheading: {
     fontWeight: 400,
     color: 'white'
-  }
+  },
 });
 
 export default styles;
