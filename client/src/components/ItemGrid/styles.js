@@ -1,12 +1,12 @@
 const styles = theme => ({
-root: {
-    flexGrow: 1,
-    height: '50%',
-    padding: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(20)
+    itemContainer:{
+        display: "flex",
+        padding:"3em"
+    },
+    singleItem:{
+        display:"block"
     }
-  },
+
 })
 
 export default styles;

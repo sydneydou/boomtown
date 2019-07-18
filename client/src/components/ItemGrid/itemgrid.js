@@ -9,13 +9,14 @@ import ItemCard from '../ItemCard'
 const ItemGrid = ({ classes, items}) => {
   
   return (
-    <Grid container spacing={2}>
-      
+    <Grid container  >
+      <Grid item xs={12} justify="center" className={classes.itemContainer} spacing={5} >
         {items.map(item => (
-          <Grid item xs={12} justify="center">
-           <ItemCard item={item}/>
+          <Grid container className={classes.singleItem}>
+           <ItemCard item={item} classes={classes}/>
            </Grid>
         ))}
+       </Grid> 
       
     </Grid>
   );

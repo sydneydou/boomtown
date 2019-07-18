@@ -3,12 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import styles from './styles';
+import { withStyles } from '@material-ui/core/styles';
 
 
-export default function ItemCard({item}) {
+const ItemCard=({classes,item}) => {
     
     return (
-      <Card >
+      <Card className={classes.itemcard}>
         <CardContent>
           <h1>{item.title}</h1>
           <p>{item.description}</p>
@@ -16,3 +18,6 @@ export default function ItemCard({item}) {
       </Card>
     );
   }
+
+
+export default withStyles(styles)(ItemCard);
