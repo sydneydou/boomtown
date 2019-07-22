@@ -4,7 +4,8 @@ const styles = theme => ({
         padding:"3em"
     },
     singleItem:{
-        display:"block"
+        display:"block",
+        width:"33%"
     }
 
 })
