@@ -1,6 +1,7 @@
 const styles = theme => ({
     itemcard:{
-        height:"30em"
+        height:"20em",
+        margin:".5em"
     }
 })
 export default styles;

@@ -9,6 +9,11 @@ import Button from '@material-ui/core/Button';
 import { Form, Field } from 'react-final-form'
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
 
 
 
@@ -26,6 +31,7 @@ class ShareForm extends Component {
   validate(formState) {
    console.log('validating');
   }
+
 
   render() {
     return (
@@ -73,6 +79,19 @@ class ShareForm extends Component {
                    </label>
                   )}
                 />
+                </div>
+                <div>
+                <FormControl >
+                  <InputLabel htmlFor="demo-controlled-open-select">Add Some Tags</InputLabel>
+                  <Select
+                
+                  >
+                    {/* TODO get tags for menu */}
+                    <MenuItem value={10}>Ten</MenuItem>
+                   
+                  </Select>
+                </FormControl>
+
                 </div>
 
                   <Button variant="contained" >
