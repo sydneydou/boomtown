@@ -11,6 +11,9 @@ import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import Checkbox from "@material-ui/core/Checkbox";
+import ListItemText from "@material-ui/core/ListItemText";
+
 import {
   updateItem,
   resetItem,
@@ -70,18 +73,42 @@ class ShareItemForm extends Component {
         });
       });
     }
+
     updateItem({
       ...values
       // tags: this.applyTags(tags)
     });
   }
 
+  handleSelectTag(event){
+    this.setState({selectedTags: event.target.value})
+  }
+
+  handleSelectFile(e){
+    this.setState({
+      fileSelected:this.fileInput.current.files[0]
+    })
+  }
+
+  generateTagsText(tags, selected) {
+    return tags
+      .map(t => (selected.indexOf(t.id) > -1 ? t.title : false))
+      .filter(e => e)
+      .join(', ');
+  }
+
+  resetFileInput(e){
+   this.props.resetItemImage();
+   this.fileInput.current.value = "";
+   this.setState({fileSelected : false});
+     
+    
+  }
+
   render() {
     const { tags, classes, updateItem } = this.props;
     return (
-      <div>
-        <Card>
-          <CardContent>
+      <div className= {classes.outformcard}>
             <Form
               validate={formState => this.validate(formState)}
               onSubmit={formState => this.onSubmit(formState)}
@@ -176,16 +203,38 @@ class ShareItemForm extends Component {
                     />
                   </div>
                   <div>
-                    <FormControl>
-                      <InputLabel htmlFor="demo-controlled-open-select">
-                        Add Some Tags
+                  <FormControl fullWidth className={classes.formControl}>
+                      <InputLabel htmlFor="tags">
+                        Add some tags
                       </InputLabel>
-                      <Select>
-                        {/* TODO get tags for menu */}
-                        <MenuItem value={10} className={classes.inputfield}>
-                          {tags.title}
-                        </MenuItem>
-                      </Select>
+                      <Field name="tags">
+                        {({ input, meta }) => {
+                          return (
+                            <Select
+                              multiple
+                              value={this.state.selectedTags}
+                              onChange={e => this.handleSelectTag(e)}
+                              renderValue={selected => {
+                                return this.generateTagsText(tags, selected);
+                              }}
+                            >
+                              {tags &&
+                                tags.map(tag => (
+                                  <MenuItem key={tag.id} value={tag.id}>
+                                    <Checkbox
+                                      checked={
+                                        this.state.selectedTags.indexOf(
+                                          tag.id,
+                                        ) > -1
+                                      }
+                                    />
+                                    <ListItemText primary={tag.title} />
+                                  </MenuItem>
+                                ))}
+                            </Select>
+                          );
+                        }}
+                      </Field>
                     </FormControl>
                   </div>
 
@@ -193,8 +242,7 @@ class ShareItemForm extends Component {
                 </form>
               )}
             />
-          </CardContent>
-        </Card>
+        
       </div>
     );
   }

@@ -7,7 +7,7 @@ import ShareItemPreview from "../../components/ShareItemPreview/ShareItemPreview
 const Share = ({ classes, tags }) => {
   return (
     <div className={classes.sharePages}>
-      <ShareItemPreview className={classes.sharepreview} />
+      <ShareItemPreview  classes={classes} />
       <ShareItemForm
         tags={tags}
         classes={classes}

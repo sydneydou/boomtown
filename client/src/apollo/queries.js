@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 /**
  * Item and user-related queries and mutations.
@@ -6,63 +6,50 @@ import gql from 'graphql-tag';
 
 const ItemFields = gql`
   fragment ItemFields on Item {
-
-     id
-     title
-     imageurl
-     description
-     created
-     tags {
-       id
-       title
-     }
-     itemowner {
-       id
-       fullname
-       email
-       bio 
-      }
-     borrower {
-       id
-       fullname
-       email
-       bio
-     }
+    id
+    title
+    imageurl
+    description
+    created
+    tags {
+      id
+      title
+    }
+    itemowner {
+      id
+      fullname
+      email
+      bio
+    }
+    borrower {
+      id
+      fullname
+      email
+      bio
+    }
   }
 `;
 
 const UserFields = gql`
-  fragment UserFields on User{
-
+  fragment UserFields on User {
     email
     fullname
     bio
-    items{
+    items {
       id
       title
-		}
-    borrowed{
+    }
+    borrowed {
       id
       title
     }
   }
 `;
 
-
-  // const AddItemFields = gql`
-  // fragment AddItemFields on NewItemInput{
-  //   {
-  //     title
-  //     id
-  //     description
-  //   }
-  // }
-  // `;
-
 export const ITEM_QUERY = gql`
   query item($id: ID!) {
-    item(id:$id){
-    ...ItemFields
+    item(id: $id) {
+      ...ItemFields
     }
   }
   ${ItemFields}
@@ -70,16 +57,16 @@ export const ITEM_QUERY = gql`
 
 export const ALL_ITEMS_QUERY = gql`
   query items($filter: ID) {
-    items(filter:$filter){
-          ...ItemFields
-        }
+    items(filter: $filter) {
+      ...ItemFields
+    }
   }
   ${ItemFields}
 `;
 
 export const ALL_USER_ITEMS_QUERY = gql`
   query user($id: ID!) {
-    user(id:$id){
+    user(id: $id) {
       ...UserFields
     }
   }
@@ -87,23 +74,21 @@ export const ALL_USER_ITEMS_QUERY = gql`
 `;
 
 export const ALL_TAGS_QUERY = gql`
-  query{
-      tags{
-        id
-        title
-      }
+  query {
+    tags {
+      id
+      title
+    }
   }
 `;
 
-// export const ADD_ITEM_MUTATION = gql`
-//   mutation addItem($item: NewItemInput!) {
-//     ...AddItemFields
-//     // # @TODO: Pass the item and image into the addItem mutation as arguments
-//     // # and return the new item id when the mutation is complete.
-//   };
-//   ${AddItemFields}
-//   return id
-// `;
+export const ADD_ITEM_MUTATION = gql`
+  mutation addItem($item: NewItemInput!) {
+    addItem(item: $item) {
+      id
+    }
+  }
+`;
 
 /**
  * Auth-related queries and mutations.

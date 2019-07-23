@@ -9,6 +9,9 @@ const styles = theme => ({
     },
     inputfield:{
         width:'17em'
+    },
+    outformcard:{
+        margin: '.5em'
     }
 });
 

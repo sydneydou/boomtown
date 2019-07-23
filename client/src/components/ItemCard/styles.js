@@ -1,7 +1,8 @@
 const styles = theme => ({
     itemcard:{
-       
-        margin:".5em"
+        // width: '120%',
+        margin:".5em",
+        height: '25em'
     },
     borrowbutton:{
         background:'none',
@@ -12,7 +13,7 @@ const styles = theme => ({
         fontSize:'8px'
     },
     media:{
-        height:'10em'
+        height:'13em'
     }
 })
 export default styles;

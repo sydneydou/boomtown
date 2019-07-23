@@ -3,14 +3,15 @@ import { Redirect, Route, Switch } from 'react-router';
 import ItemsContainer from "../pages/Items"
 import ProfileContainer from "../pages/Profile"
 import ShareContainer from "../pages/Share"
+import Header from "../components/Header"
 import HomeContainer from "../pages/Home"
 
 export default () => (
   <Fragment>
-    {/* @TODO: Add your menu component here */}
-
+    
+      <Header />
       <Switch>
-
+        
       <Route path="/items" component={ItemsContainer} />
       <Redirect from="/allitems" to="/items" />
       <Route path="/profile" component={ProfileContainer} />

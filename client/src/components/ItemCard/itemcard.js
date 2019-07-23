@@ -21,8 +21,9 @@ const ItemCard=({classes,item}) => {
           />
           <CardContent>
             
-         
+            {/* <p>{item.created}</p> */}
             <h1>{item.title}</h1>
+            {/* map over tags again */}
             {/* <p>{item.tags[0].title}</p> */}
             <p>{item.description}</p>
             
