@@ -13,7 +13,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
-import { ADD_ITEM_MUTATION} from '../../apollo/queries';
+import {ADD_ITEM_MUTATION} from '../../apollo/queries';
+import { Mutation } from "react-apollo";
 
 import {
   updateItem,
@@ -109,7 +110,8 @@ class ShareItemForm extends Component {
     return (
       
       <div className= {classes.outformcard}>
-      
+        <Mutation mutation={ADD_ITEM_MUTATION}>
+        {(addTodo, { data }) => (
             <Form
               validate={formState => this.validate(formState)}
               onSubmit={formState => this.onSubmit(formState)}
@@ -243,8 +245,10 @@ class ShareItemForm extends Component {
                 </form>
               )}
             />
-        
+        )}
+        </Mutation>
       </div>
+      
     );
   }
 }
