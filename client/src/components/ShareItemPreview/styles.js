@@ -1,6 +1,6 @@
 const styles = theme => ({
     itempreview:{
-        width:'35%'
+         width:'30%'
     }
 });
 

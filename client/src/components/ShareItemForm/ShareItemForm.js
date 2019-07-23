@@ -13,6 +13,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
+import { ADD_ITEM_MUTATION} from '../../apollo/queries';
 
 import {
   updateItem,
@@ -101,19 +102,19 @@ class ShareItemForm extends Component {
    this.props.resetItemImage();
    this.fileInput.current.value = "";
    this.setState({fileSelected : false});
-     
-    
   }
 
   render() {
     const { tags, classes, updateItem } = this.props;
     return (
+      
       <div className= {classes.outformcard}>
+      
             <Form
               validate={formState => this.validate(formState)}
               onSubmit={formState => this.onSubmit(formState)}
               render={({ handleSubmit, pristine, invalid }) => (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} >
                   <FormSpy
                     subscription={{ values: true }}
                     component={({ values }) => {
@@ -123,7 +124,7 @@ class ShareItemForm extends Component {
                       return "";
                     }}
                   />
-                  <h1>Share. Borrow. Prosper.</h1>
+                  <h1 className={classes.form}>Share. Borrow. <br /> Prosper.</h1>
                   <FormControl fullWidth className={classes.formControl}>
                     <Field name="imageurl">
                       {({ input, meta }) => {

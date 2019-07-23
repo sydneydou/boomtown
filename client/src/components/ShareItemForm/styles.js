@@ -11,7 +11,13 @@ const styles = theme => ({
         width:'17em'
     },
     outformcard:{
-        margin: '.5em'
+        margin: '.5em',
+    },
+    formControl:{
+        width:'17.2em'
+    },
+    form:{
+         fontSize:'24px'
     }
 });
 

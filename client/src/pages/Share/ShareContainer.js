@@ -6,6 +6,7 @@ import { Query } from "react-apollo";
 
 class ShareContainer extends Component {
   render() {
+    
     return (
       <Query query={ALL_TAGS_QUERY}>
         {({ loading, error, data }) => {
