@@ -48,14 +48,6 @@ const UserFields = gql`
   }
 `;
 
-const TagFields = gql`
-  fragment TagFields on Tag{
-    tags{
-      id
-      title   
-    }
-  }
-  `;
 
   // const AddItemFields = gql`
   // fragment AddItemFields on NewItemInput{
@@ -95,10 +87,12 @@ export const ALL_USER_ITEMS_QUERY = gql`
 `;
 
 export const ALL_TAGS_QUERY = gql`
-  query tags{
-      ...TagFields
+  query{
+      tags{
+        id
+        title
+      }
   }
-  ${TagFields}
 `;
 
 // export const ADD_ITEM_MUTATION = gql`

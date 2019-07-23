@@ -5,11 +5,10 @@ import ItemGrid from '../../components/ItemGrid';
 
 
 
-
 const Items = ({ classes, items }) => {
   return (
     <div>
-      <ItemGrid items={items}/>
+      <ItemGrid items={items} />
     </div>
     
   );

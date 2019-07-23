@@ -1,3 +1,3 @@
-import ItemCard from "./itemcard.js";
+import ItemCard from "./ItemCard.js";
 
 export default ItemCard;

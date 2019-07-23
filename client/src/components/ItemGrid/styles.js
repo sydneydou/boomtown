@@ -1,7 +1,8 @@
 const styles = theme => ({
     itemContainer:{
         display: "flex",
-        padding:"3em"
+        padding:"3em",
+        background:'#212121'
     },
     singleItem:{
         display:"block",
