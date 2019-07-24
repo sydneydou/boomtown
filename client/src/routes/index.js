@@ -5,8 +5,8 @@ import ProfileContainer from "../pages/Profile";
 import ShareContainer from "../pages/Share";
 import Header from "../components/Header";
 import HomeContainer from "../pages/Home";
-import {ViewerContext }from "../context/ViewerProvider";
-import PRoute from "../components/PrivateRoute"
+import { ViewerContext } from "../context/ViewerProvider";
+import PRoute from "../components/PrivateRoute";
 // import FullScreenLoader from "../components/FullScreenLoader";
 
 export default () => (
@@ -29,10 +29,10 @@ export default () => (
             <Header />
             <Switch>
               <PRoute path="/items" component={ItemsContainer} />
-              <PRoute path="/profile" component={ProfileContainer} />
+              <PRoute exact path="/profile" component={ProfileContainer} />
               <PRoute
-                path="/profile/:userid"
                 exact
+                path="/profile/:userid"
                 component={ProfileContainer}
               />
               <PRoute path="/share" component={ShareContainer} />

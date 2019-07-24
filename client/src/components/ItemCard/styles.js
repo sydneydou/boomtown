@@ -23,6 +23,15 @@ const styles = theme => ({
     fontSize: "16px",
     fontWeight: "500",
     marginTop:'2em'
-  }
+  },
+  itemownerdiv:{
+    display:'flex'
+  },
+  usericon:{
+    borderRadius:'50%',
+    height: '2.3em',
+    width: '2.3em'
+  },
+ 
 });
 export default styles;
