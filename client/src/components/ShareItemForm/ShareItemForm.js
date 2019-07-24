@@ -15,6 +15,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
 import {ADD_ITEM_MUTATION} from '../../apollo/queries';
 import { Mutation } from "react-apollo";
+import {ViewerContext }from "../../context/ViewerProvider";
 
 import {
   updateItem,
@@ -36,6 +37,13 @@ class ShareItemForm extends Component {
 
   onSubmit(formState,addItem) {
     //runs addItem
+   return addItem = () =>{
+     item:{
+        // title:formState.title,
+        // description:formState.description,
+        // tags:{this.state.selectedTags}
+     }
+    }
     //build object to get new value of form
     // run addItem
     console.log(formState);
@@ -119,7 +127,8 @@ class ShareItemForm extends Component {
   render() {
     const { tags, classes, updateItem } = this.props;
     return (
-      
+      <ViewerContext.Consumer>
+      {({viewer})=>(
       <div className= {classes.outformcard}>
         <Mutation mutation={ADD_ITEM_MUTATION}>
         {(addItem, { data }) => (
@@ -259,6 +268,8 @@ class ShareItemForm extends Component {
         )}
         </Mutation>
       </div>
+      )}
+      </ViewerContext.Consumer>
       
     );
   }

@@ -8,9 +8,12 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import {ViewerContext }from "../../context/ViewerProvider";
 
 const ItemCard = ({ classes, item }) => {
   return (
+    <ViewerContext.Consumer>
+      {({viewer})=>(
     <Card className={classes.itemcard}>
       <CardActionArea>
         <CardMedia
@@ -36,6 +39,8 @@ const ItemCard = ({ classes, item }) => {
         </CardContent>
       </CardActionArea>
     </Card>
+      )}
+    </ViewerContext.Consumer>
   );
 };
 
