@@ -19,8 +19,7 @@ const ItemCard = ({ classes, item }) => {
           title={item.title}
         />
         <CardContent>
-          {/* <Gravatar email="sydneydouglas1@gmail.com" /> */}
-          {/* <p>{item.created}</p> */}
+          
           <h1 className={classes.itemtitle}>{item.title}</h1>
           {item.tags.map(tag => {
             return (

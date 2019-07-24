@@ -18,6 +18,10 @@ const styles = theme => ({
     },
     form:{
          fontSize:'24px'
+    },
+    submitbutton:{
+        marginTop: '1em',
+        height: '1.5em'
     }
 });
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Share from "./Share";
 import { ALL_TAGS_QUERY } from "../../apollo/queries";
-// import FullScreenLoader from '../../components/FullScreenLoader';
+//import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 
 class ShareContainer extends Component {

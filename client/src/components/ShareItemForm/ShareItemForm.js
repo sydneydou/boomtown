@@ -34,8 +34,19 @@ class ShareItemForm extends Component {
     this.fileInput = React.createRef();
   }
 
-  onSubmit(formState) {
+  onSubmit(formState,addItem) {
+    //runs addItem
+    //build object to get new value of form
+    // run addItem
     console.log(formState);
+    
+    // addItem(
+    //   item:{
+    //     title:formState.title,
+    //     description:formState.description,
+    //     tags:this.state.selectedTags
+    //   }
+    // )
   }
   validate(formState) {
     console.log("validating");
@@ -111,10 +122,10 @@ class ShareItemForm extends Component {
       
       <div className= {classes.outformcard}>
         <Mutation mutation={ADD_ITEM_MUTATION}>
-        {(addTodo, { data }) => (
+        {(addItem, { data }) => (
             <Form
               validate={formState => this.validate(formState)}
-              onSubmit={formState => this.onSubmit(formState)}
+              onSubmit={formState => this.onSubmit(formState,addItem)}
               render={({ handleSubmit, pristine, invalid }) => (
                 <form onSubmit={handleSubmit} >
                   <FormSpy
@@ -241,7 +252,7 @@ class ShareItemForm extends Component {
                     </FormControl>
                   </div>
 
-                  <Button variant="contained">Share</Button>
+                  <Button variant="contained" type='submit' className={classes.submitbutton}>Share</Button>
                 </form>
               )}
             />
