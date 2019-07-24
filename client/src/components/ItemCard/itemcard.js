@@ -28,7 +28,7 @@ const ItemCard = ({ classes, item }) => {
           <div className={classes.itemownerdiv}>
         <Gravatar 
             className= {classes.usericon}
-            email={item.itemowner.email} />
+            email={item.itemowner.email || viewer.email } />
             <span>
             <p>{item.itemowner.fullname} </p>
             {/* <Moment>{item.created}</Moment> */}

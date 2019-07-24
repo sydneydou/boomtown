@@ -4,7 +4,7 @@ import { ViewerContext } from "../../context/ViewerProvider";
 // import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
-import ItemGrid from '../../components/ItemGrid'
+
 
 class ProfileContainer extends Component {
   render() {
@@ -23,7 +23,7 @@ class ProfileContainer extends Component {
               return(
               <div>
                <Profile data={data} />
-              {/* <ItemGrid items={data.items}/>  */}
+              
               </div>)
             }}
           </Query>

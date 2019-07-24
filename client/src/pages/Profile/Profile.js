@@ -6,9 +6,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Gravatar from "react-gravatar";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import ItemGrid from '../../components/ItemGrid'
+
 
 const Profile = ({ classes, data }) => {
+  console.log(data)
   return (
+
     <div className={classes.profilepage}>
       <Card>
         <CardActionArea>
@@ -25,6 +29,8 @@ const Profile = ({ classes, data }) => {
           </CardContent>
         </CardActionArea>
       </Card>
+    <ItemGrid items={data.users.items}/>
+
     </div>
   );
 };

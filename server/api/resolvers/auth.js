@@ -60,14 +60,14 @@ module.exports = (app) => {
         const user = await context.pgResource.createUser({
           fullname: args.user.fullname,
           email: args.user.email,
-          password: hashedPassword
+          password: 'password'
         });
 
-        setCookie({
-          tokenName: app.get('JWT_COOKIE_NAME'),
-          token: generateToken(user, app.get('JWT_SECRET')),
-          res: context.req.res
-        });
+        // setCookie({
+        //   tokenName: app.get('JWT_COOKIE_NAME'),
+        //   token: generateToken(user, app.get('JWT_SECRET')),
+        //   res: context.req.res
+        // });
 
         return {
           id: user.id
@@ -94,11 +94,11 @@ module.exports = (app) => {
         // -------------------------------
         if (!valid || !user) throw 'User was not found.';
 
-        setCookie({
-          tokenName: app.get('JWT_COOKIE_NAME'),
-          token: generateToken(user, app.get('JWT_SECRET')),
-          res: context.req.res
-        });
+        // setCookie({
+        //   tokenName: app.get('JWT_COOKIE_NAME'),
+        //   token: generateToken(user, app.get('JWT_SECRET')),
+        //   res: context.req.res
+        // });
 
         return {
           id: user.id
@@ -108,9 +108,9 @@ module.exports = (app) => {
       }
     },
 
-    logout(parent, args, context) {
-      context.req.res.clearCookie(app.get('JWT_COOKIE_NAME'));
-      return true;
-    }
+    // logout(parent, args, context) {
+    //   context.req.res.clearCookie(app.get('JWT_COOKIE_NAME'));
+    //   return true;
+    // }
   };
 };

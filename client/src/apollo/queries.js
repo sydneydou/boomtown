@@ -64,10 +64,19 @@ export const ALL_ITEMS_QUERY = gql`
 export const ALL_USER_ITEMS_QUERY = gql`
   query user($id: ID!) {
     users(id: $id) {
-      ...UserFields
+      id
+      fullname
+      email
+      bio
+      items{
+        ...ItemFields
+      }
+      borrowed {
+        ...ItemFields
+      }
     }
   }
-  ${UserFields}
+  ${ItemFields}
 `;
 
 export const ALL_TAGS_QUERY = gql`
@@ -99,16 +108,14 @@ export const VIEWER_QUERY = gql`
   }
 `;
 export const LOGOUT_MUTATION = gql`
-  mutation signup($user:SignupInput!){
-        signup(user: $user) {
-          id
-        }
+  mutation {
+        logout
   }
 `;
 
 export const SIGNUP_MUTATION = gql`
   mutation signup($user: SignupInput!) {
-    login(user: $user){
+    signup(user: $user){
       id
     }
   }
