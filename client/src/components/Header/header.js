@@ -10,6 +10,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import logo from "../../images/boomtown.svg";
 import { Mutation } from "react-apollo";
 import { LOGOUT_MUTATION } from "../../apollo/queries";
+import { Link } from 'react-router-dom';
 import client from "../../apollo"
 const Header = ({ classes }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,13 +28,13 @@ const Header = ({ classes }) => {
      onCompleted={() => client.resetStore()} >
       {logout => (
         <div className={classes.header}>
-          <a href="#">
-            {" "}
+        <Link to='/welcome' >
+         
             <img className={classes.logo} src={logo} />{" "}
-          </a>
-
+            </Link>
+            <Link to='/share' >
           <h4 className={classes.sharetext}>Share Something</h4>
-
+          </Link>
           <IconButton
             aria-label="more"
             aria-controls="long-menu"
@@ -49,7 +50,7 @@ const Header = ({ classes }) => {
             open={open}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}><Link to='/profile' >Profile</Link></MenuItem>
             <MenuItem onClick={logout}>Logout</MenuItem>
           </Menu>
         </div>

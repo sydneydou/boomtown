@@ -35,13 +35,14 @@ class ShareItemForm extends Component {
     this.fileInput = React.createRef();
   }
 
-  onSubmit(formState, addItem) {
+  onSubmit(formState, addItem, tags) {
+    console.log(this.applyTags(tags));
     try {
       addItem({
         variables: {
           item: {
             ...formState,
-            tags: this.applyTags(this.state.selectedTags)
+            tags: this.applyTags(tags)
           }
         }
       });
@@ -90,8 +91,8 @@ class ShareItemForm extends Component {
     }
 
     updateItem({
-      ...values
-      // tags: this.applyTags(tags)
+      ...values,
+      tags: this.applyTags(tags)
     });
   }
 
@@ -261,6 +262,7 @@ class ShareItemForm extends Component {
                       <Button
                         variant="contained"
                         type="submit"
+                        onClick={handleSubmit}
                         className={classes.submitbutton}
                       >
                         Share

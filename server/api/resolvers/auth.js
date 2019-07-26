@@ -58,7 +58,7 @@ module.exports = app => {
         console.log(user)
         const valid = await bcrypt.compare(args.user.password, user.password);
             
-        if (!valid || !user) throw "User was not found.";
+        if (!valid || !user) return "User was not found.";
 
         setCookie({
           tokenName: app.get("JWT_COOKIE_NAME"),

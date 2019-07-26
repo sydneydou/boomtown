@@ -90,7 +90,12 @@ export const ALL_TAGS_QUERY = gql`
 export const ADD_ITEM_MUTATION = gql`
   mutation addItem($item: NewItemInput!) {
     addItem(item: $item) {
+    title
+    description
+    tags{
       id
+      title
+    }
     }
   }
 `;
@@ -99,6 +104,7 @@ export const VIEWER_QUERY = gql`
   query {
     viewer {
       id
+     
     }
   }
 `;

@@ -35,7 +35,7 @@ module.exports = postgres => {
     },
     async getUserAndPasswordForVerification(email) {
       const findUserQuery = {
-        text: "SELECT id, email , password FROM users where email = $1 LIMIT 1", 
+        text: "SELECT id, email , password FROM users where email = $1 LIMIT 1",
         values: [email]
       };
       try {
@@ -114,8 +114,11 @@ module.exports = postgres => {
 
       const tags = await postgres.query(tagsQuery);
       return tags.rows;
+
+      
     },
-    async saveNewItem({ item, image, users }) {
+    async saveNewItem({ item, image, user }) {
+      console.log(item);
       try {
         return new Promise((resolve, reject) => {
           postgres.connect((err, client, done) => {
@@ -123,22 +126,25 @@ module.exports = postgres => {
               client.query("BEGIN", async err => {
                 const { title, description, tags } = item;
 
+                console.log("-->" + item.tags);
+
                 const insertQuery = {
                   text: `INSERT INTO items (title,description,ownerid) values ($1, $2, $3) RETURNING *`,
-                  values: [title, description, users]
+                  values: [title, description, user.id]
                 };
 
                 const newItem = await postgres.query(insertQuery);
                 const tagsId = tags.map(tag => tag.id);
                 const newItemId = newItem.rows[0].id;
+                //console.log(tags);
 
                 const newItemTag = await postgres.query({
-                  text: `INSERT INTO itemtags (tagid,itemid) values ${tagsQueryString(
-                    tags,
+                  text: `INSERT INTO itemtags (tagid, itemid) VALUES ${tagsQueryString(
+                    [...tags],
                     newItemId,
-                    " "
+                    ""
                   )}`,
-                  values: tagsId
+                  values: tags.map(tag => tag.id)
                 });
 
                 client.query("COMMIT", err => {
@@ -149,7 +155,7 @@ module.exports = postgres => {
                   done();
 
                   resolve(newItem.rows[0]);
-                  resolve(newItemTag);
+                  // resolve(newItemTag);
                 });
               });
             } catch (e) {

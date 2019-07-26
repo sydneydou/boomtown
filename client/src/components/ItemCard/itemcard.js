@@ -31,7 +31,8 @@ const ItemCard = ({ classes, item }) => {
                   email={item.itemowner.email || viewer.email}
                 />
                 <span>
-                  <p>{item.itemowner.fullname} </p>
+                <p>{item.itemowner.fullname} </p>
+                {/* <p>{viewer.fullname}</p> */}
                   {/* <Moment>{item.created}</Moment> */}
                 </span>
               </div>
