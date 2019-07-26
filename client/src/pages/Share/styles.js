@@ -1,7 +1,7 @@
 const styles = theme => ({
     sharePages:{
         display:'flex',
-        justifyContent:'space-around',
+        justifyContent:'space-evenly',
         paddingTop:'2em'
     },
     shareform:{

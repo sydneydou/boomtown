@@ -1,16 +1,15 @@
-const { gql } = require('apollo-server-express');
-
+const { gql } = require("apollo-server-express");
 
 module.exports = gql`
-
   scalar Date
   scalar Upload
+  directive @auth on FIELD_DEFINITION
 
   type Item {
     id: ID!
     title: String!
     imageurl: String
-    description: String! 
+    description: String!
     itemowner: User!
     tags: [Tag]
     created: Date!
@@ -22,8 +21,8 @@ module.exports = gql`
     email: String!
     fullname: String!
     bio: String
-    items:[Item]
-    borrowed:[Item]
+    items: [Item]
+    borrowed: [Item]
   }
 
   type Tag {
@@ -53,7 +52,7 @@ module.exports = gql`
     description: String
     tags: [AssignedTag]!
   }
-  
+
   input SignupInput {
     fullname: String!
     email: String!
@@ -72,12 +71,10 @@ module.exports = gql`
     tags: [Tag]
   }
 
-
   type Mutation {
     login(user: LoginInput!): User!
-    logout:Boolean!
+    logout: Boolean!
     signup(user: SignupInput!): User!
     addItem(item: NewItemInput!): Item
-
   }
 `;

@@ -5,7 +5,6 @@ import { ViewerContext } from "../../context/ViewerProvider";
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 
-
 class ProfileContainer extends Component {
   render() {
     console.log(this.props.match);
@@ -20,11 +19,7 @@ class ProfileContainer extends Component {
               console.log(data);
               if (loading) return "Loading...";
               if (error) return `Error! ${error.message}`;
-              return(
-              <div>
-               <Profile data={data} />
-              
-              </div>)
+              return <Profile data={data} />;
             }}
           </Query>
         )}

@@ -5,33 +5,38 @@ const styles = theme => ({
   },
   borrowbutton: {
     background: "none",
-    width: "1.5em",
-    height: "1.5em",
+    width: "6em",
+    height: "3em",
     marginTop:'.8em'
   },
   buttontext: {
-    fontSize: "8px"
+    fontSize: "15px"
   },
   media: {
-    height: "13em"
+    height: "20em"
   },
   tagTitle: {
     color: "grey",
-    fontSize: "10px"
+    fontSize: "15px"
   },
   itemtitle: {
-    fontSize: "16px",
+    fontSize: "27px",
     fontWeight: "500",
-    marginTop:'2em'
+   
   },
   itemownerdiv:{
-    display:'flex'
+    display:'flex',
+    fontSize:'14px',
   },
   usericon:{
     borderRadius:'50%',
     height: '2.3em',
-    width: '2.3em'
+    width: '2.3em',
+    marginRight:'12px'
   },
+  itemdescription:{
+    fontSize: '15px'
+  }
  
 });
 export default styles;

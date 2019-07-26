@@ -1,27 +1,30 @@
 const styles = theme => ({
     imagebutton:{
         backgroundColor: '#f9a825',
-        width: '17em',
-        height:' 1.4em'
+        width: '29em',
+        height:' 2.5em'
     },
     imagebuttontext:{
-        fontSize:'8px'
+        fontSize:'15px'
     },
     inputfield:{
-        width:'17em'
+        width:'20.4em'
     },
     outformcard:{
         margin: '.5em',
+        width:'20.4em'
     },
     formControl:{
-        width:'17.2em'
+        width:'20.4em'
     },
     form:{
-         fontSize:'24px'
+         fontSize:'45px',
+         width:'100%'
     },
     submitbutton:{
-        marginTop: '1em',
-        height: '1.5em'
+        marginTop: '2em',
+        height: '2.5em',
+        width:'8em'
     }
 });
 

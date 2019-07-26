@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 
-
 const ItemFields = gql`
   fragment ItemFields on Item {
     id
@@ -68,7 +67,7 @@ export const ALL_USER_ITEMS_QUERY = gql`
       fullname
       email
       bio
-      items{
+      items {
         ...ItemFields
       }
       borrowed {
@@ -96,26 +95,22 @@ export const ADD_ITEM_MUTATION = gql`
   }
 `;
 
-
-
 export const VIEWER_QUERY = gql`
   query {
-    viewer{
+    viewer {
       id
-      email
-      fullname
     }
   }
 `;
 export const LOGOUT_MUTATION = gql`
   mutation {
-        logout
+    logout
   }
 `;
 
 export const SIGNUP_MUTATION = gql`
   mutation signup($user: SignupInput!) {
-    signup(user: $user){
+    signup(user: $user) {
       id
     }
   }

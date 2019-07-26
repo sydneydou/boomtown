@@ -13,25 +13,25 @@ const Profile = ({ classes, data }) => {
   console.log(data)
   return (
 
-    <div className={classes.profilepage}>
-      <Card>
+     <div className={classes.profilepage}>
+      <Card className={classes.profilecard}>
         <CardActionArea>
           <CardContent>
             <span className={classes.profileblock}>
               <Gravatar className={classes.usericon} email={data.users.email} />
               <h1 className={classes.username}>{data.users.fullname}</h1>
             </span>
-            <p>
+            <p className={classes.profileitemcount}>
               {data.users.items.length} Items shared.{" "}
               {data.users.borrowed.length} Items borrowed
             </p>
-            <p>{!data.users.bio ? "No bio found" : data.users.bio}</p>
+            <p className={classes.profilebio}>{!data.users.bio ? "No bio found" : data.users.bio}</p>
           </CardContent>
         </CardActionArea>
       </Card>
     <ItemGrid items={data.users.items}/>
 
-    </div>
+     </div>
   );
 };
 
