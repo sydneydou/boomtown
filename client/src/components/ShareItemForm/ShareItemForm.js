@@ -35,7 +35,7 @@ class ShareItemForm extends Component {
     this.fileInput = React.createRef();
   }
 
-  onSubmit(formState, addItem, tags) {
+  onSubmit(formState, tags, addItem) {
     console.log(this.applyTags(tags));
     try {
       addItem({
@@ -129,7 +129,9 @@ class ShareItemForm extends Component {
               {(addItem, { data }) => (
                 <Form
                   validate={formState => this.validate(formState)}
-                  onSubmit={formState => this.onSubmit(formState, addItem)}
+                  onSubmit={formState =>
+                    this.onSubmit(formState, tags, addItem)
+                  }
                   render={({ handleSubmit, pristine, invalid }) => (
                     <form onSubmit={handleSubmit}>
                       <FormSpy

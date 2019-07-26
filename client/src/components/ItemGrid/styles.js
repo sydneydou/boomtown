@@ -3,7 +3,8 @@ const styles = theme => ({
         display: "flex",
         padding:"3em",
         background:'#212121',
-        height: '60em'
+        height: '60em',
+        flexWrap:'wrap'
     },
     singleItem:{
         display:"block",

@@ -20,4 +20,3 @@ const mapStateToProps = ({ shareItemPreview }) => {
 };
 
 export default connect (mapStateToProps)(withStyles(styles)(ShareItemPreview));
-

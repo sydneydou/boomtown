@@ -2,12 +2,13 @@ const styles = theme => ({
   itemcard: {
     margin: ".5em",
     height: "25em",
+    minWidth: "33%"
   },
   borrowbutton: {
     background: "none",
     width: "6em",
     height: "3em",
-    marginTop:'.8em'
+    marginTop: ".8em"
   },
   buttontext: {
     fontSize: "15px"
@@ -21,22 +22,20 @@ const styles = theme => ({
   },
   itemtitle: {
     fontSize: "27px",
-    fontWeight: "500",
-   
+    fontWeight: "500"
   },
-  itemownerdiv:{
-    display:'flex',
-    fontSize:'14px',
+  itemownerdiv: {
+    display: "flex",
+    fontSize: "14px"
   },
-  usericon:{
-    borderRadius:'50%',
-    height: '2.3em',
-    width: '2.3em',
-    marginRight:'12px'
+  usericon: {
+    borderRadius: "50%",
+    height: "2.3em",
+    width: "2.3em",
+    marginRight: "12px"
   },
-  itemdescription:{
-    fontSize: '15px'
+  itemdescription: {
+    fontSize: "15px"
   }
- 
 });
 export default styles;
