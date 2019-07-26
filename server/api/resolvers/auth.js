@@ -53,9 +53,10 @@ module.exports = app => {
     async login(parent, args, context) {
       try {
         const user = await context.pgResource.getUserAndPasswordForVerification(
-          args.email
+          args.user.email
         );
-        const valid = await bcrypt.compare(args.password, user.password);
+        console.log(user)
+        const valid = await bcrypt.compare(args.user.password, user.password);
             
         if (!valid || !user) throw "User was not found.";
 
@@ -71,11 +72,13 @@ module.exports = app => {
       } catch (e) {
         throw new AuthenticationError(e);
       }
+    },
+
+    logout(parent, args, context) {
+      context.req.res.clearCookie(app.get('JWT_COOKIE_NAME'));
+      return true;
     }
 
-    // logout(parent, args, context) {
-    //   context.req.res.clearCookie(app.get('JWT_COOKIE_NAME'));
-    //   return true;
-    // }
   };
-};
+}
+

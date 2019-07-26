@@ -99,14 +99,15 @@ module.exports = app => {
       ...authMutations(app),
       // -------------------------------
       //image = await image;
-      //const user = await jwt.decode(context.token, app.get('JWT_SECRET'));
+      
 
       async addItem(parent, args, context, info) {
+        const user = await jwt.decode(context.token, app.get('JWT_SECRET'));
         try {
           const newItem = await context.pgResource.saveNewItem({
             item: args.item,
             image: undefined,
-            users: args.user
+            users: user
           });
           return newItem;
         } catch (e) {

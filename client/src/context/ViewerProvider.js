@@ -11,9 +11,7 @@ export const ViewerProvider = ({ children }) => {
     console.log(data)
       const viewer = data && data.viewer ? data.viewer : null;
 
-  //const viewer = { id: 1, email : 'test@example.com', fullname: 'Test User', bio: 'No bio'};
- // const viewer = null;
-  //const loading = false;
+
   return (
     <ViewerContext.Provider value={{ viewer, loading }}>
       {children}
