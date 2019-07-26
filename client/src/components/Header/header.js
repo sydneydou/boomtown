@@ -10,7 +10,9 @@ import logo from "../../images/boomtown.svg";
 import { Mutation } from "react-apollo";
 import { LOGOUT_MUTATION } from "../../apollo/queries";
 import { Link } from "react-router-dom";
-import Icon from '@material-ui/core/Icon';
+import CircleIcon from "@material-ui/icons/AddCircle";
+import ProfileIcon from "@material-ui/icons/Fingerprint";
+import LogoutIcon from "@material-ui/icons/PowerSettingsNew";
 import client from "../../apollo";
 const Header = ({ classes }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -35,8 +37,10 @@ const Header = ({ classes }) => {
           </Link>
           <div className={classes.header}>
             <Link to="/share">
+            <div>
               
-              <h4 className={classes.sharetext}>Share Something</h4>
+              <h4 className={classes.sharetext}><CircleIcon />Share Something</h4>
+              </div>
             </Link>
             <IconButton
               aria-label="more"
@@ -54,9 +58,9 @@ const Header = ({ classes }) => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile"><ProfileIcon />Profile</Link>
               </MenuItem>
-              <MenuItem onClick={logout}>Logout</MenuItem>
+              <MenuItem onClick={logout}><LogoutIcon />Logout</MenuItem>
             </Menu>
           </div>
         </div>

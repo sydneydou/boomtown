@@ -6,14 +6,11 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Gravatar from "react-gravatar";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import ItemGrid from '../../components/ItemGrid'
-
+import ItemGrid from "../../components/ItemGrid";
 
 const Profile = ({ classes, data }) => {
-  console.log(data)
   return (
-
-     <div className={classes.profilepage}>
+    <div className={classes.profilepage}>
       <Card className={classes.profilecard}>
         <CardActionArea>
           <CardContent>
@@ -25,13 +22,19 @@ const Profile = ({ classes, data }) => {
               {data.users.items.length} Items shared.{" "}
               {data.users.borrowed.length} Items borrowed
             </p>
-            <p className={classes.profilebio}>{!data.users.bio ? "No bio found" : data.users.bio}</p>
+            <p className={classes.profilebio}>
+              {!data.users.bio ? "No bio found" : data.users.bio}
+            </p>
           </CardContent>
         </CardActionArea>
       </Card>
-    <ItemGrid items={data.users.items}/>
 
-     </div>
+      <div >
+        {data.users.items.length > 0 ? <h1 className={classes.sharedprofile}> Shared Items </h1> : null}
+      </div>
+
+      <ItemGrid items={data.users.items} />
+    </div>
   );
 };
 

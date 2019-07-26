@@ -13,7 +13,6 @@ const styles = theme => ({
   sharetext: {
     color: "black",
     fontSize: "13px",
-    paddingTop:'1em',
     textTransform: "uppercase",
     fontWeight: "500"
   },

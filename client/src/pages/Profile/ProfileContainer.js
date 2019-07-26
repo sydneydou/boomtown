@@ -7,7 +7,7 @@ import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 
 class ProfileContainer extends Component {
   render() {
-    console.log(this.props.match);
+    
     return (
       <ViewerContext.Consumer>
         {({ viewer }) => (
@@ -16,7 +16,6 @@ class ProfileContainer extends Component {
             variables={{ id: this.props.match.params.userid || viewer.id }}
           >
             {({ loading, error, data }) => {
-              console.log(data);
               if (loading) return "Loading...";
               if (error) return `Error! ${error.message}`;
               return <Profile data={data} />;

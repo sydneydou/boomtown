@@ -22,13 +22,20 @@ const styles = theme => ({
       },
       profilepage:{
         background:'#212121',
-        marginTop: '6em'
+        paddingTop: '6em'
       },
       profileitemcount:{
           fontSize: '2em'
       },
       profilebio:{
           fontSize:'1.5em'
+      },
+      sharedprofile:{
+          color:"#f9a825",
+          paddingLeft:'3em',
+          fontWeight: '500',
+          fontSize: '40px'
+
       }
 });
 
