@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 import { ViewerContext } from "../../context/ViewerProvider";
-// import FullScreenLoader from '../../components/FullScreenLoader';
+import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import { ALL_USER_ITEMS_QUERY } from "../../apollo/queries";
 
@@ -16,7 +16,10 @@ class ProfileContainer extends Component {
             variables={{ id: this.props.match.params.userid || viewer.id }}
           >
             {({ loading, error, data }) => {
-              if (loading) return "Loading...";
+               if (loading) return (
+                <FullScreenLoader />
+              );
+              
               if (error) return `Error! ${error.message}`;
               return <Profile data={data} />;
             }}

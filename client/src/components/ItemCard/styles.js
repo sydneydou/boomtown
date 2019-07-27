@@ -6,7 +6,7 @@ const styles = theme => ({
   },
   borrowbutton: {
     background: "none",
-    width: "6em",
+    width: "9em",
     height: "3em",
     marginTop: ".8em"
   },

@@ -14,7 +14,8 @@ const styles = theme => ({
     color: "black",
     fontSize: "13px",
     textTransform: "uppercase",
-    fontWeight: "500"
+    fontWeight: "500",
+    paddingRight: "2em"
   },
   logo: {
     height: "3.5em",

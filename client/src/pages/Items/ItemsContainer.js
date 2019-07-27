@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Items from "./Items";
-//import FullScreenLoader from '../../components/FullScreenLoader';
+import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { ALL_ITEMS_QUERY } from "../../apollo/queries";
@@ -13,7 +13,9 @@ class ItemsContainer extends Component {
         {({ viewer }) => (
           <Query query={ALL_ITEMS_QUERY} variables={{ filter: viewer.id }}>
             {({ loading, error, data }) => {
-              if (loading) return "Loading...";
+              if (loading) return (
+                <FullScreenLoader />
+              );
               if (error) return `Error! ${error.message}`;
               return <Items items={data.items} />;
             }}

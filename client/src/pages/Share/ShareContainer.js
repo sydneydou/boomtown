@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Share from "./Share";
 import { ALL_TAGS_QUERY } from "../../apollo/queries";
-//import FullScreenLoader from '../../components/FullScreenLoader';
+import FullScreenLoader from '../../components/FullScreenLoader';
 import { Query } from "react-apollo";
 
 class ShareContainer extends Component {
@@ -10,7 +10,9 @@ class ShareContainer extends Component {
     return (
       <Query query={ALL_TAGS_QUERY}>
         {({ loading, error, data }) => {
-          if (loading) return "Loading...";
+           if (loading) return (
+            <FullScreenLoader />
+          );
           if (error) return `Error! ${error.message}`;
           return <Share tags={data.tags} />;
         }}

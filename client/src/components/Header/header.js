@@ -39,7 +39,7 @@ const Header = ({ classes }) => {
             <Link to="/share">
             <div>
               
-              <h4 className={classes.sharetext}><CircleIcon />Share Something</h4>
+              <h4 className={classes.sharetext}><CircleIcon /><span>Share Something</span></h4>
               </div>
             </Link>
             <IconButton
@@ -58,9 +58,9 @@ const Header = ({ classes }) => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <Link to="/profile"><ProfileIcon />Profile</Link>
+                <Link to="/profile"><ProfileIcon /><span>Profile</span></Link>
               </MenuItem>
-              <MenuItem onClick={logout}><LogoutIcon />Logout</MenuItem>
+              <MenuItem onClick={logout}><LogoutIcon /><span>Logout</span></MenuItem>
             </Menu>
           </div>
         </div>

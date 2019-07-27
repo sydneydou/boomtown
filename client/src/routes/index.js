@@ -7,14 +7,14 @@ import Header from "../components/Header";
 import HomeContainer from "../pages/Home";
 import { ViewerContext } from "../context/ViewerProvider";
 import PRoute from "../components/PrivateRoute";
-// import FullScreenLoader from "../components/FullScreenLoader";
+import FullScreenLoader from "../components/FullScreenLoader";
 
 export default () => (
   <Fragment>
     <ViewerContext.Consumer>
       {({ viewer, loading }) => {
-        if (loading) return <h1>Loading</h1>;
-        //should be <FullScreenLoader />
+        if (loading) return <FullScreenLoader />
+        
 
         if (!viewer) {
           return (
