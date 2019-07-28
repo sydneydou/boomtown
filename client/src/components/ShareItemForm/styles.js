@@ -5,7 +5,8 @@ const styles = theme => ({
         height:' 2.5em'
     },
     imagebuttontext:{
-        fontSize:'15px'
+        fontSize:'15px',
+        marginTop:'0'
     },
     inputfield:{
         width:'20.4em'
@@ -25,7 +26,8 @@ const styles = theme => ({
         marginTop: '2em',
         height: '2.5em',
         width:'8em'
-    }
+    },
+ 
 });
 
 export default styles;

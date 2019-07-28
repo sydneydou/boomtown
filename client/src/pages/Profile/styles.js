@@ -7,7 +7,8 @@ const styles = theme => ({
         marginRight: '1.7em'
       },
       profileblock:{
-          display:'flex'
+          display:'flex',
+          height: '8em'
       },
       username:{
         color: 'grey',
@@ -15,7 +16,7 @@ const styles = theme => ({
         fontSize: '4.5em'
       },
       profilecard:{
-        height: '22em',
+        height: '14em',
         marginLeft: '6em',
         marginRight: '6em',
         paddingLeft:'6em'
@@ -34,7 +35,8 @@ const styles = theme => ({
           color:"#f9a825",
           paddingLeft:'3em',
           fontWeight: '500',
-          fontSize: '40px'
+          fontSize: '38px',
+          paddingTop:'1em'
 
       }
 });

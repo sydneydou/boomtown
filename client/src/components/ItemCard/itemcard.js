@@ -34,7 +34,7 @@ const ItemCard = ({ classes, item }) => {
                 />
                 <span>
                   <p>{item.itemowner.fullname}</p>
-                {moment(item.created).fromNow()}
+                <span className={classes.datecard}>{moment(item.created).fromNow()}</span>
                 </span>
               </div>
               <h1 className={classes.itemtitle}>{item.title}</h1>

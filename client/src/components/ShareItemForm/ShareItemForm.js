@@ -69,8 +69,8 @@ class ShareItemForm extends Component {
     });
   }
 
-  //gets called from dispatchUpdate function
-  //picks selected tag containing array which is an object containing title and id
+  
+  
   applyTags(tags) {
     return (
       tags &&
@@ -80,7 +80,7 @@ class ShareItemForm extends Component {
     );
   }
 
-  //calls updateItem prop that dispatches action so that the preview gets updated
+
   dispatchUpdate(values, tags, updateItem) {
     if (!values.imageurl && this.state.fileSelected) {
       this.getBase64Url().then(imageurl => {
@@ -219,6 +219,7 @@ class ShareItemForm extends Component {
                                 value={input.value}
                                 margin="normal"
                                 className={classes.inputfield}
+                                
                               />
                             </label>
                           )}

@@ -9,17 +9,17 @@ const styles = theme => ({
     }
   },
   headline: {
-    fontWeight: 500,
+    fontWeight: 800,
     color: theme.palette.text.primary,
-    fontSize: theme.typography.h3.fontSize,
-    [theme.breakpoints.up('md')]: {
-      fontSize: theme.typography.h1.fontSize
-    }
+    fontSize: '5.5em'
   },
   subheading: {
     fontWeight: 400,
     color: 'white'
   },
+  welcome:{
+    fontSize: '1.5em'
+  }
 });
 
 export default styles;

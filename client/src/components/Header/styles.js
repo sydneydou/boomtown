@@ -21,7 +21,17 @@ const styles = theme => ({
     height: "3.5em",
     paddingTop: "8px",
     fontSize: " 16px"
-  }
+  },
+  sharesomething: {
+    display: "flex",
+    alignItems: "center",
+    padding: "5px",
+    color:'black'
+  },
+  circicon:{
+    marginRight:'8px'
+  },
+
 });
 
 export default styles;

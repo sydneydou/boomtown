@@ -30,12 +30,16 @@ const styles = theme => ({
   },
   usericon: {
     borderRadius: "50%",
-    height: "2.3em",
-    width: "2.3em",
-    marginRight: "12px"
+    height: "3.3em",
+    width: "3.3em",
+    marginRight: "12px",
+    marginTop: "1em"
   },
   itemdescription: {
     fontSize: "15px"
+  },
+  datecard: {
+    color: "grey"
   }
 });
 export default styles;
