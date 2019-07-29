@@ -29,7 +29,7 @@ const styles = theme => ({
     color:'black'
   },
   circicon:{
-    marginRight:'23px'
+    marginRight:'16px'
   },
 
 });
