@@ -36,6 +36,7 @@ const Header = ({ classes }) => {
             <img className={classes.logo} src={logo} />{" "}
           </Link>
           <div className={classes.header}>
+        
             <Link to="/share">
             <div>
               

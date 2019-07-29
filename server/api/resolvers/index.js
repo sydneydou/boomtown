@@ -97,9 +97,6 @@ module.exports = app => {
 
     Mutation: {
       ...authMutations(app),
-      // -------------------------------
-      //image = await image;
-
       async addItem(parent, args, context, info) {
         const user = await jwt.decode(context.token, app.get("JWT_SECRET"));
         try {
