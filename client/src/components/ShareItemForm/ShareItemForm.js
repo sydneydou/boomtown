@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -14,6 +11,7 @@ import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
 import { ADD_ITEM_MUTATION } from "../../apollo/queries";
+import { ALL_ITEMS_QUERY } from "../../apollo/queries";
 import { Mutation } from "react-apollo";
 import { ViewerContext } from "../../context/ViewerProvider";
 
@@ -69,8 +67,6 @@ class ShareItemForm extends Component {
     });
   }
 
-  
-  
   applyTags(tags) {
     return (
       tags &&
@@ -79,7 +75,6 @@ class ShareItemForm extends Component {
         .map(t => ({ title: t.title, id: t.id }))
     );
   }
-
 
   dispatchUpdate(values, tags, updateItem) {
     if (!values.imageurl && this.state.fileSelected) {
@@ -125,7 +120,12 @@ class ShareItemForm extends Component {
       <ViewerContext.Consumer>
         {({ viewer }) => (
           <div className={classes.outformcard}>
-            <Mutation mutation={ADD_ITEM_MUTATION}>
+            <Mutation
+              mutation={ADD_ITEM_MUTATION}
+              refetchQueries={() => [
+                { query: ALL_ITEMS_QUERY, variables: { id: viewer.id } }
+              ]}
+            >
               {(addItem, { data }) => (
                 <Form
                   validate={formState => this.validate(formState)}
@@ -219,7 +219,6 @@ class ShareItemForm extends Component {
                                 value={input.value}
                                 margin="normal"
                                 className={classes.inputfield}
-                                
                               />
                             </label>
                           )}

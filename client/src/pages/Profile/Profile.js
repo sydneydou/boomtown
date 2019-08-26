@@ -2,7 +2,6 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Gravatar from "react-gravatar";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -29,8 +28,10 @@ const Profile = ({ classes, data }) => {
         </CardActionArea>
       </Card>
 
-      <div >
-        {data.users.items.length > 0 ? <h1 className={classes.sharedprofile}> Shared Items </h1> : null}
+      <div>
+        {data.users.items.length > 0 ? (
+          <h1 className={classes.sharedprofile}> Shared Items </h1>
+        ) : null}
       </div>
 
       <ItemGrid items={data.users.items} />

@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -33,14 +32,21 @@ const Header = ({ classes }) => {
       {logout => (
         <div className={classes.header}>
           <Link to="/welcome">
-            <img className={classes.logo} src={logo} />{" "}
+            <img
+              alt="logo on welcome page"
+              className={classes.logo}
+              src={logo}
+            />{" "}
           </Link>
           <div className={classes.header}>
-        
             <Link to="/share">
-            <div>
-              
-              <h4 className={classes.sharetext} ><span className={classes.sharesomething} ><CircleIcon className={classes.circicon}/>Share Something</span></h4>
+              <div>
+                <h4 className={classes.sharetext}>
+                  <span className={classes.sharesomething}>
+                    <CircleIcon className={classes.circicon} />
+                    Share Something
+                  </span>
+                </h4>
               </div>
             </Link>
             <IconButton
@@ -59,9 +65,19 @@ const Header = ({ classes }) => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <Link to="/profile"><span className={classes.sharesomething}><ProfileIcon className={classes.circicon}/>Profile</span></Link>
+                <Link to="/profile">
+                  <span className={classes.sharesomething}>
+                    <ProfileIcon className={classes.circicon} />
+                    Profile
+                  </span>
+                </Link>
               </MenuItem>
-              <MenuItem onClick={logout}><span className={classes.sharesomething}><LogoutIcon className={classes.circicon}/>Logout</span></MenuItem>
+              <MenuItem onClick={logout}>
+                <span className={classes.sharesomething}>
+                  <LogoutIcon className={classes.circicon} />
+                  Logout
+                </span>
+              </MenuItem>
             </Menu>
           </div>
         </div>

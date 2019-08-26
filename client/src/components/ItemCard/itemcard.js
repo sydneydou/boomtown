@@ -1,7 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
@@ -11,11 +9,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import { ViewerContext } from "../../context/ViewerProvider";
 import Gravatar from "react-gravatar";
 
-var moment = require('moment');
-
+var moment = require("moment");
 
 const ItemCard = ({ classes, item }) => {
-  
   return (
     <ViewerContext.Consumer>
       {({ viewer }) => (
@@ -34,7 +30,9 @@ const ItemCard = ({ classes, item }) => {
                 />
                 <span>
                   <p>{item.itemowner.fullname}</p>
-                <span className={classes.datecard}>{moment(item.created).fromNow()}</span>
+                  <span className={classes.datecard}>
+                    {moment(item.created).fromNow()}
+                  </span>
                 </span>
               </div>
               <h1 className={classes.itemtitle}>{item.title}</h1>
