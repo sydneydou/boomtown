@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Gravatar from "react-gravatar";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import ItemGrid from "../../components/ItemGrid";
+import PropTypes from "prop-types";
 
 const Profile = ({ classes, data }) => {
   return (
@@ -37,6 +38,10 @@ const Profile = ({ classes, data }) => {
       <ItemGrid items={data.users.items} />
     </div>
   );
+};
+
+Profile.propTypes = {
+  data: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Profile);

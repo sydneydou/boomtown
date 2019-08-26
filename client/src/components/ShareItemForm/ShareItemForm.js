@@ -34,7 +34,6 @@ class ShareItemForm extends Component {
   }
 
   onSubmit(formState, tags, addItem) {
-    console.log(this.applyTags(tags));
     try {
       addItem({
         variables: {
