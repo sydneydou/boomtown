@@ -11,11 +11,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import { ViewerContext } from "../../context/ViewerProvider";
 import Gravatar from "react-gravatar";
 
-var moment = require('moment');
-
+const moment = require("moment");
 
 const ItemCard = ({ classes, item }) => {
-  
   return (
     <ViewerContext.Consumer>
       {({ viewer }) => (
@@ -34,7 +32,9 @@ const ItemCard = ({ classes, item }) => {
                 />
                 <span>
                   <p>{item.itemowner.fullname}</p>
-                <span className={classes.datecard}>{moment(item.created).fromNow()}</span>
+                  <span className={classes.datecard}>
+                    {moment(item.created).fromNow()}
+                  </span>
                 </span>
               </div>
               <h1 className={classes.itemtitle}>{item.title}</h1>
