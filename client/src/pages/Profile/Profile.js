@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Gravatar from "react-gravatar";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import ItemGrid from "../../components/ItemGrid";
+import PropTypes from "prop-types";
 
 const Profile = ({ classes, data }) => {
   return (
@@ -29,13 +30,19 @@ const Profile = ({ classes, data }) => {
         </CardActionArea>
       </Card>
 
-      <div >
-        {data.users.items.length > 0 ? <h1 className={classes.sharedprofile}> Shared Items </h1> : null}
+      <div>
+        {data.users.items.length > 0 ? (
+          <h1 className={classes.sharedprofile}> Shared Items </h1>
+        ) : null}
       </div>
 
       <ItemGrid items={data.users.items} />
     </div>
   );
+};
+
+Profile.propTypes = {
+  data: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Profile);

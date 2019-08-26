@@ -36,7 +36,6 @@ class ShareItemForm extends Component {
   }
 
   onSubmit(formState, tags, addItem) {
-    console.log(this.applyTags(tags));
     try {
       addItem({
         variables: {
@@ -69,8 +68,6 @@ class ShareItemForm extends Component {
     });
   }
 
-  
-  
   applyTags(tags) {
     return (
       tags &&
@@ -79,7 +76,6 @@ class ShareItemForm extends Component {
         .map(t => ({ title: t.title, id: t.id }))
     );
   }
-
 
   dispatchUpdate(values, tags, updateItem) {
     if (!values.imageurl && this.state.fileSelected) {
@@ -219,7 +215,6 @@ class ShareItemForm extends Component {
                                 value={input.value}
                                 margin="normal"
                                 className={classes.inputfield}
-                                
                               />
                             </label>
                           )}
