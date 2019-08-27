@@ -8,49 +8,51 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { ViewerContext } from "../../context/ViewerProvider";
 import Gravatar from "react-gravatar";
-
+import { Link } from "react-router-dom";
 const moment = require("moment");
 
 const ItemCard = ({ classes, item }) => {
   return (
     <ViewerContext.Consumer>
       {({ viewer }) => (
-        <Card className={classes.itemcard}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              image={item.imageurl}
-              title={item.title}
-            />
-            <CardContent>
-              <div className={classes.itemownerdiv}>
-                <Gravatar
-                  className={classes.usericon}
-                  email={item.itemowner.email || viewer.email}
-                />
-                <span>
-                  <p>{item.itemowner.fullname}</p>
-                  <span className={classes.datecard}>
-                    {moment(item.created).fromNow()}
+        <Link to={"/profile/" + item.itemowner.id}>
+          <Card className={classes.itemcard}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={item.imageurl}
+                title={item.title}
+              />
+              <CardContent>
+                <div className={classes.itemownerdiv}>
+                  <Gravatar
+                    className={classes.usericon}
+                    email={item.itemowner.email || viewer.email}
+                  />
+                  <span>
+                    <p>{item.itemowner.fullname}</p>
+                    <span className={classes.datecard}>
+                      {moment(item.created).fromNow()}
+                    </span>
                   </span>
-                </span>
-              </div>
-              <h1 className={classes.itemtitle}>{item.title}</h1>
-              {item.tags.map(tag => {
-                return (
-                  <p className={classes.tagTitle} key={tag.id}>
-                    {tag.title}
-                  </p>
-                );
-              })}
-              <p className={classes.itemdescription}>{item.description}</p>
+                </div>
+                <h1 className={classes.itemtitle}>{item.title}</h1>
+                {item.tags.map(tag => {
+                  return (
+                    <p className={classes.tagTitle} key={tag.id}>
+                      {tag.title}
+                    </p>
+                  );
+                })}
+                <p className={classes.itemdescription}>{item.description}</p>
 
-              <Button variant="contained" className={classes.borrowbutton}>
-                <span className={classes.buttontext}>Borrow</span>
-              </Button>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+                <Button variant="contained" className={classes.borrowbutton}>
+                  <span className={classes.buttontext}>Borrow</span>
+                </Button>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Link>
       )}
     </ViewerContext.Consumer>
   );

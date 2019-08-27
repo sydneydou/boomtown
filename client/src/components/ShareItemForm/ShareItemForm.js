@@ -320,18 +320,12 @@ class ShareItemForm extends Component {
           </DialogContent>
           <DialogActions>
             <Link to="/profile" className={classes.EventPopupLink}>
-              <Button
-                // onClick={this.handleClose}
-                className={classes.EventPopupBtns}
-              >
+              <Button className={classes.EventPopupBtns}>
                 Show me my new item on my profile
               </Button>
             </Link>
             <Link to="/home" className={classes.EventPopupLink}>
-              <Button
-                //onClick={this.handleClose}
-                className={classes.EventPopupBtns}
-              >
+              <Button className={classes.EventPopupBtns}>
                 Show me other items
               </Button>
             </Link>
