@@ -112,7 +112,7 @@ class AccountForm extends Component {
                   {this.state.formToggle ? "Enter" : "Create Account"}
                 </Button>
                 <Typography>
-                  <button
+                  <Button
                     className={classes.formToggle}
                     type="button"
                     onClick={() => {
@@ -125,7 +125,7 @@ class AccountForm extends Component {
                     {this.state.formToggle
                       ? "Create an account."
                       : "Login to existing account."}
-                  </button>
+                  </Button>
                 </Typography>
               </Grid>
             </FormControl>
