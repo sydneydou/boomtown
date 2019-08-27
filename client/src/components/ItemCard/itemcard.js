@@ -3,7 +3,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import styles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { ViewerContext } from "../../context/ViewerProvider";
@@ -19,6 +18,7 @@ const ItemCard = ({ classes, item }) => {
           <Card className={classes.itemcard}>
             <CardActionArea>
               <CardMedia
+                src={item.imageurl}
                 className={classes.media}
                 image={item.imageurl}
                 title={item.title}
@@ -46,9 +46,9 @@ const ItemCard = ({ classes, item }) => {
                 })}
                 <p className={classes.itemdescription}>{item.description}</p>
 
-                <Button variant="contained" className={classes.borrowbutton}>
-                  <span className={classes.buttontext}>Borrow</span>
-                </Button>
+                <div className={classes.borrow}>
+                  <span className={classes.buttext}>Borrow</span>
+                </div>
               </CardContent>
             </CardActionArea>
           </Card>

@@ -56,10 +56,6 @@ class ShareItemForm extends Component {
     }
   }
 
-  validate(formState) {
-    console.log("validating");
-  }
-
   handleClickOpen() {
     this.setState({ setOpen: true });
     this.setState({ open: true });
@@ -146,7 +142,7 @@ class ShareItemForm extends Component {
               >
                 {(addItem, { data }) => (
                   <Form
-                    validate={formState => this.validate(formState)}
+                    // validate={formState => this.validate(formState)}
                     onSubmit={formState => {
                       this.onSubmit(formState, tags, addItem);
                       this.handleClickOpen();

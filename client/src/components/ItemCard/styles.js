@@ -4,14 +4,19 @@ const styles = theme => ({
     height: "25em",
     minWidth: "33%"
   },
-  borrowbutton: {
+  borrow: {
     background: "none",
-    width: "9em",
-    height: "3em",
-    marginTop: ".8em"
+    width: "11em",
+    height: "3.5em",
+    marginTop: ".8em",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "1px solid lightgray"
   },
-  buttontext: {
-    fontSize: "15px"
+  buttext: {
+    fontSize: "17px",
+    textTransform: "uppercase"
   },
   media: {
     height: "20em"
