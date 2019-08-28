@@ -32,14 +32,12 @@ class AccountForm extends Component {
 
     return (
       <Form
-        onSubmit=
-        {values =>{
-          const user = {variables: { user: values }};
+        onSubmit={values => {
+          const user = { variables: { user: values } };
           this.state.formToggle
             ? loginMutation(user).catch(error => this.setState({ error }))
             : signupMutation(user).catch(error => this.setState({ error }));
         }}
-
         validate={validate.bind(this)}
         render={({ handleSubmit, pristine, invalid, submitting, form }) => (
           <form onSubmit={handleSubmit} className={classes.accountForm}>
@@ -89,7 +87,8 @@ class AccountForm extends Component {
                     type="password"
                     inputProps={{
                       ...input,
-                      autoComplete: "off"
+                      autoComplete: "off",
+                      type: "password"
                     }}
                     value={input.value}
                   />
@@ -132,8 +131,7 @@ class AccountForm extends Component {
               </Grid>
             </FormControl>
             <Typography className={classes.errorMessage}>
-              {(this.state.error &&
-                this.state.formToggle)}
+              {this.state.error && this.state.formToggle}
             </Typography>
           </form>
         )}
@@ -153,14 +151,13 @@ export default compose(
     options: {
       refetchQueries
     },
-    name: 'signupMutation'
+    name: "signupMutation"
   }),
   graphql(LOGIN_MUTATION, {
     options: {
       refetchQueries
     },
-    name: 'loginMutation'
+    name: "loginMutation"
   }),
   withStyles(styles)
 )(AccountForm);
-
