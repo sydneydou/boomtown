@@ -13,7 +13,7 @@ const Items = ({ classes, items }) => {
 };
 
 Items.propTypes = {
-  items: PropTypes.object.isRequired
+  items: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(Items);
