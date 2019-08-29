@@ -6,7 +6,7 @@ import ItemCard from "../ItemCard";
 
 const ItemGrid = ({ classes, items }) => {
   return (
-    <Grid container justify="center" className={classes.itemContainer}>
+    <Grid container justify="left" className={classes.itemContainer}>
       {items.map(item => (
         <Grid item className={classes.singleItem} xs={4} key={item.id}>
           <ItemCard item={item} />
