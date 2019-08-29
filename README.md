@@ -17,9 +17,9 @@ A user creates an account (or logs in with an existing account), to be displayed
 
 ## Screenshots
 
-![alt text](public/assets/boom1.png)
-![alt text](public/assets/boom2.png)
-![alt text](public/assets/boom3.png)
+![alt text](assets/boom1.png)
+![alt text](assets/boom2.png)
+![alt text](assets/boom3.png)
 
 ## Server
 
