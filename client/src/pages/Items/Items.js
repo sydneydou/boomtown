@@ -5,11 +5,7 @@ import ItemGrid from "../../components/ItemGrid";
 import PropTypes from "prop-types";
 
 const Items = ({ classes, items }) => {
-  return (
-    <div>
-      <ItemGrid items={items} />
-    </div>
-  );
+  return <ItemGrid items={items} />;
 };
 
 Items.propTypes = {
