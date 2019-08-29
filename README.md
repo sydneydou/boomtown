@@ -15,6 +15,12 @@ A user creates an account (or logs in with an existing account), to be displayed
 - React (JavaScript library for building user interfaces)
 - Redux (JavaScript library for managing application state)
 
+## Screenshots
+
+![alt text](public/assets/boom1.png)
+![alt text](public/assets/boom2.png)
+![alt text](public/assets/boom3.png)
+
 ## Server
 
 Commands must be run from the `server` directory:
