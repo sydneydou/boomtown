@@ -87,8 +87,8 @@ class AccountForm extends Component {
                     type="password"
                     inputProps={{
                       ...input,
-                      type: "password",
-                      autoComplete: "off"
+                      autoComplete: "off",
+                      type: "password"
                     }}
                     value={input.value}
                   />
